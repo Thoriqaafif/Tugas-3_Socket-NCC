@@ -3,6 +3,7 @@ const mysql = require('mysql');
 const dbconnection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
+    password: '987654321',
     database: 'realtime_chat',
     multipleStatements: true
 });
