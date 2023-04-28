@@ -1,0 +1,133 @@
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing : border-box;
+    font-family : sans-serif;
+}
+
+html, body{
+    display : grid;
+    height : 100%;
+    width : 100%;
+    place-items: center;
+    background-color: #8efcd0;
+    background-image: linear-gradient(62deg, #8efcd0 0%, #e0c3fc 100%);
+}
+::selection{
+    background : #1a75ff;
+    color : #fff;
+}
+
+.wrapper{
+    overflow : hidden;
+    max-width : 390px;
+    background : #fff;
+    padding : 40px;
+    border-radius: 15px;
+    box-shadow: rgb(38 57 77) 0px 20px 30px -10px;
+}
+
+.wrapper .title-text{
+    width : 50%;
+    font-size : 35px;
+    font-weight : 600;
+    text-align : center;
+    transition: all 0.6s cubic-bezier(0.68, 0.55, 0.265, 1.55);
+}
+
+.form-container{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    background-color: #fff;
+}
+
+.field{
+    height: 50px;
+    padding: 15px 0 0 0;
+    margin-top: 15px;
+    transition: 0.4s;
+}
+.field input{
+    height : 30px;
+    width: 250px;
+    font-size: 14px;
+    transition: 0.4s;
+}
+
+.field-btn input{
+    color: #71627e;
+    background-color: #e0c3fc;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 7px 0;
+    width: 250px;
+    border-color: #e0c3fc;
+    border-radius: 7px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.field-btn input:hover{
+    background-color: #5edfb0;
+}
+
+.signup-link{
+    margin-top: 20px;
+    font-size: 12px;
+    text-align: center;
+    font-family : sans-serif;
+}
+
+.title-form{
+    font-size: 28px;
+    width: 250px;
+}
+
+#login-error-msg-holder {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+  
+#login-error-msg {
+    width: 23%;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #8a0000;
+    border: 1px solid #8a0000;
+    background-color: #e58f8f;
+    opacity: 0;
+}
+
+#regist-error-msg-holder {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+  
+#regist-error-msg {
+    width: 23%;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #8a0000;
+    border: 1px solid #8a0000;
+    background-color: #e58f8f;
+    opacity: 0;
+}
+  
+#error-msg-second-line {
+    display: block;
+}
