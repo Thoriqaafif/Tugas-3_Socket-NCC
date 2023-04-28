@@ -4,7 +4,7 @@ const app = express();
 const path = require('path');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-const port = 2000;
+const port = 5000;
 
 server.listen(port, () => {
   console.log('Server listening at port %d', port);
