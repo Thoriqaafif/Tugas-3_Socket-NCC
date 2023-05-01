@@ -31,3 +31,24 @@ app.post("/add", (req, res) => {
     res.redirect("/");
   })
 })
+
+app.get("/:logusername", (req, res) => {
+  // buat query sql
+  const querySql = `SELECT * FROM users WHERE username = ('${req.query.logusername}') AND password = ('${req.query.logpassword}')`;
+
+  // jalankan query
+  dbconnection.query(querySql, (err, rows, field) => {
+          // error handling
+          if (err) {
+              return res.status(500).json({ message: 'There is an error', error: err });
+          }
+
+          // jika request berhasil
+          if(rows.length){
+              res.status(200).json({ data: rows });
+          } else {
+              return res.status(404).json({ message: 'Username or Password is Incorrect'});
+          }
+      });    
+  return 0;
+});

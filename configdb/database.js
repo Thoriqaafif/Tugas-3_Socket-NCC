@@ -13,7 +13,6 @@ dbconnection.connect((err) => {
     console.log('MySQL Connected to root@localhost in realtime_chat Database');
 });
 module.exports = dbconnection;
-
 /*
 const mysql = require('mysql');
 // buat konfigurasi koneksi

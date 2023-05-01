@@ -14,12 +14,12 @@
                     <div class = "title-form">Login Form</div>
                 </div>
                 <div class = "form-container">
-                    <form action = "/" class = "login" id = "login">
+                    <form action = "/:logusername" class = "login" id = "login" method = "get">
                         <div class = "field">
-                            <input type = "text" placeholder = "Username" required id = "logusername">
+                            <input type = "text" placeholder = "Username" required name = "logusername">
                         </div>
                         <div class = "field">
-                            <input type = "password" placeholder = "Password" required id = "logpassword">
+                            <input type = "password" placeholder = "Password" required name = "logpassword">
                         </div>
                         <div class = "field-btn">
                             <div class = "btn-layer"></div>
