@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const port = 5000;
-const dbconnection = require('./configdb/database');
+//const dbconnection = require('./configdb/database');
 
 server.listen(port, () => {
   console.log('Server listening at port %d', port);
@@ -14,7 +14,8 @@ server.listen(port, () => {
 
 // Routing
 app.use(express.static(path.join(__dirname, 'login_page')));
-app.use('chat-page',express.static(path.join(__dirname, 'chat-page')))
+app.use('/chat', express.static(path.join(__dirname, 'chat-page')));
+app.use('/img', express.static(path.join(__dirname, 'img')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,17 +23,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "html")
 app.set("views", "login_page")
 
-io.on('connection',(socket) => {
-
-})
-
 //acces login page
 app.get('/', (req, res) => {  
   res.sendFile(login_page + '/index.html');
 });
 
 app.get('/chat', (req, res) => {  
-  res.sendFile(chat-page + '/index.html');
+  res.sendFile(path.join(__dirname, 'chat-page/index.html'));
 });
 
 //register
