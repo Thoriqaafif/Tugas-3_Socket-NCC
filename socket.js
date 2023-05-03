@@ -14,6 +14,7 @@ server.listen(port, () => {
 
 // Routing
 app.use(express.static(path.join(__dirname, 'login_page')));
+app.use('chat-page',express.static(path.join(__dirname, 'chat-page')))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,10 +22,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "html")
 app.set("views", "login_page")
 
-app.get('/', (req, res) => {
+io.on('connection',(socket) => {
+  
+})
+
+//acces login page
+app.get('/', (req, res) => {  
   res.sendFile(login_page + '/index.html');
 });
 
+//register
 app.post("/add", (req, res) => {
   const insertSql = `INSERT INTO users (username, password) VALUES ('${req.body.username}', '${req.body.password}');`
   dbconnection.query(insertSql, (err, result) => {
@@ -32,6 +39,7 @@ app.post("/add", (req, res) => {
   })
 })
 
+//login
 app.get("/:logusername", (req, res) => {
   // buat query sql
   const querySql = `SELECT * FROM users WHERE username = ('${req.query.logusername}') AND password = ('${req.query.logpassword}')`;

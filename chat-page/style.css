@@ -1,0 +1,87 @@
+.col-4, .col-8{
+    padding:0;
+}
+.top-bar{
+    padding:10px;
+    background-color: #e1f4f3;
+    height:10vh;
+    display: flex;
+    align-items: center;
+}
+.top-bar h1{
+    font-family: "Open Sans", sans-serif;
+    font-size: 36px;
+    margin-right: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
+.top-bar img{
+    height:40px;
+    margin-right: 20px;
+}
+a:hover,a:visited,a:link,a:active{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color:#333333;
+}
+a > h2{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16pt;
+    text-align: center;
+    margin:0;
+}
+.chat-box {
+    height:80vh;
+    background-color: white;
+    padding:15px;
+}
+.room-list{
+    height:90vh;
+    background-color: white;
+}
+.bottom-bar{
+    height:10vh;
+    background-color: #393e46;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.chat{
+    display: block;
+    margin-bottom: 10px;
+}
+.chat-nama{
+    display:flex;
+    font-size:12pt;
+    margin-bottom:5px;
+}
+.chat-bubble{
+    display:flex;
+    width:max-content;
+    max-width: 50vw;
+    background-color: #43d8c9;
+    border-radius:25px;
+    align-items:center;
+    padding: 5px 10px;
+}
+.chat-isi{
+    display: flex;
+    margin: 0;
+}
+.message{
+    width:63vw;
+    height:6vh;
+}
+
+
+/*TESTING*/
+.dropdown{display:inline-block;}
+h6.dropdown-toggle{
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+}
+h6.dropdown-toggle:hover{
+    z-index: 100;
+}
