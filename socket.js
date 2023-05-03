@@ -23,12 +23,16 @@ app.set("view engine", "html")
 app.set("views", "login_page")
 
 io.on('connection',(socket) => {
-  
+
 })
 
 //acces login page
 app.get('/', (req, res) => {  
   res.sendFile(login_page + '/index.html');
+});
+
+app.get('/chat', (req, res) => {  
+  res.sendFile(chat-page + '/index.html');
 });
 
 //register
