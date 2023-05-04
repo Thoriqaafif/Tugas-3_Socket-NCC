@@ -5,6 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
+//const session = require('express-session');
 const port = 5000;
 //const dbconnection = require('./configdb/database');
 
@@ -24,7 +25,7 @@ app.set("view engine", "html")
 app.set("views", "login_page")
 
 //acces login page
-app.get('/', (req, res) => {  
+/*app.get('/', (req, res) => {  
   res.sendFile(login_page + '/index.html');
 });
 
@@ -61,3 +62,61 @@ app.get("/:logusername", (req, res) => {
       });    
   return 0;
 });
+*/
+//TESTING
+let socketId;
+let akun = [];
+let joinedRooms=[];
+
+io.on("connection", (socket) => {
+  socketId=socket.id;
+  console.log(socketId);
+
+  //when client register, server store usn and pass to database
+  socket.on('signup', (usn,pass) =>{
+    //
+    if(usn && pass){
+      //check if username has been used
+
+      //username hasn't used
+      akun.push({username:usn,password:pass});
+      console.log("tes");
+      //server gives callback to client
+    }
+    else if(!usn && !pass){
+
+    }
+    else if (usn && !pass){
+    }
+  })
+
+  //when the client login, server validate the usn and pass
+  socket.on('login',(usn,pass)=>{
+    if(usn && pass){
+      let find=false;
+
+      console.log("Username:"+usn);
+      console.log("Password:"+pass);
+      //search usn and pass in database
+      for(i=0;i<akun.length;i++){
+        if(usn == akun[i].username && pass==akun[i].password){
+          find=true;
+          //console.log(akun[i].username);
+        }
+      }
+
+      if(find){
+        console.log("Ada bang akunnya");
+        socket.emit('login-succes', (true));
+      }
+      else{
+        console.log("salah kali passwordnyaa");
+      }
+
+      //callback the client's room
+    }
+    else{
+      console.log('tidak masuk bos');
+    }
+  })
+})

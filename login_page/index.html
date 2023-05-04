@@ -1,54 +1,59 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta charset = "UTF-8">
-        <meta name = "viewport" content = "width = 100vw, initial-scale = 1.0">
-        <title>Login Page</title>
-        <link rel = "stylesheet" href = style.css>
-        <script defer src="logscript.js"></script>
-    </head>
-    <body>
-        <div class = "wrapper">
-            <div id = "form1">
-                <div class = "title-text">
-                    <div class = "title-form">Login Form</div>
-                </div>
-                <div class = "form-container">
-                    <form action = "/:logusername" class = "login" id = "login" method = "get">
-                        <div class = "field">
-                            <input type = "text" placeholder = "Username" required name = "logusername">
-                        </div>
-                        <div class = "field">
-                            <input type = "password" placeholder = "Password" required name = "logpassword">
-                        </div>
-                        <div class = "field-btn">
-                            <div class = "btn-layer"></div>
-                            <input type = "submit" value = "Login" id = "login-button">
-                        </div>
-                        <div class = "signup-link">Don,t have account? <a href = "#form2" id="toForm2"> Register </a></div>
-                    </form>
-                </div>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = 100vw, initial-scale = 1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href=style.css>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="/script.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="form1">
+            <div class="title-text">
+                <div class="title-form">Login Form</div>
             </div>
-            <div id = "form2">
-                <div class = "title-text">
-                    <div class = "title-form">Registration Form</div>
-                </div>
-                <div class = "form-container">
-                    <form action = "/add" class = "signup" id = "signup" method = "POST">
-                        <div class = "field">
-                            <input type = "text" placeholder = "Input Username" required name = "username" id = "username">
-                        </div>
-                        <div class = "field">
-                            <input type = "password" placeholder = "Input Password" required name = "password" id = "password">
-                        </div>
-                        <div class = "field-btn">
-                            <div class = "btn-layer"></div>
-                            <input type = "submit" value = "Register" id = "register-button">
-                        </div>
-                        <div class = "signup-link">Already have account? <a href = "index.html"> Login </a></div>
-                    </form>
-                </div>
+            <div class="form-container">
+                <form class="login" id="login">
+                    <div class="field">
+                        <input class="Username" type="text" placeholder="Username" required name="logusername">
+                    </div>
+                    <div class="field">
+                        <input class="Password" type="password" placeholder="Password" required name="logpassword">
+                    </div>
+                    <div class="field-btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" value="Login" id="login-button">
+                    </div>
+                    <div class="signup-link">Don,t have account? <a href="#form2" id="toForm2"> Register </a></div>
+                </form>
             </div>
         </div>
-    </body>
+        <div id="form2">
+            <div class="title-text">
+                <div class="title-form">Registration Form</div>
+            </div>
+            <div class="form-container">
+                <form class="signup" id="signup">
+                    <div class="field">
+                        <input type="text" placeholder="Input Username" required name="username" id="username">
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Input Password" required name="password" id="password">
+                    </div>
+                    <div class="field-btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" value="Register" id="register-button">
+                    </div>
+                    <div class="signup-link">Already have account? <a href="index.html"> Login </a></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
