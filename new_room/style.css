@@ -1,0 +1,90 @@
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing : border-box;
+    font-family : sans-serif;
+}
+
+html, body{
+    display : grid;
+    height : 100%;
+    width : 100%;
+    place-items: center;
+    background-color: #8efcd0;
+    background-image: linear-gradient(62deg, #8efcd0 0%, #e0c3fc 100%);
+}
+::selection{
+    background : #1a75ff;
+    color : #fff;
+}
+
+.wrapper{
+    overflow : hidden;
+    max-width : 500px;
+    background : #fff;
+    padding : 40px;
+    border-radius: 15px;
+    box-shadow: rgb(38 57 77) 0px 20px 30px -10px;
+}
+
+.wrapper .title-form{
+    width : 100%;
+    font-size : 35px;
+    font-weight : 600;
+    text-align : center;
+    transition: all 0.6s cubic-bezier(0.68, 0.55, 0.265, 1.55);
+}
+
+.form-container{
+    position: relative;
+    width: 400px;
+    height: 250px;
+    background-color: #fff;
+}
+
+.field{
+    height: 50px;
+    padding: 15px 0 0 0;
+    margin-top: 15px;
+    transition: 0.4s;
+}
+.field input{
+    height : 30px;
+    width: 400px;
+    font-size: 14px;
+    transition: 0.4s;
+}
+
+.field-btn input{
+    color: #71627e;
+    background-color: #e0c3fc;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 7px 0;
+    width: 200px;
+    border-color: #e0c3fc;
+    border-radius: 7px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.4s;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}
+
+.field-btn input:hover{
+    background-color: #5edfb0;
+}
+
+.checkbox-label{
+    display: block;
+    margin-top: 20px;
+    align-content: center;
+    position: relative;
+    font-size: 15px;
+}
+
+.password{
+    display: none;
+}

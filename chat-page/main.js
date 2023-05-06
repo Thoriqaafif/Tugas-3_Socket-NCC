@@ -82,6 +82,7 @@ $(function () {
             $typingMessages.remove();
         }
 
+<<<<<<< HEAD
         const $usernameDiv = $('<span class="username"/>')
             .text(data.username)
             .css('color', getUsernameColor(data.username));
@@ -278,3 +279,24 @@ $(function () {
     });
 
 });
+=======
+var chat = document.getElementsByClassName('chat');
+//chat.style.float = "right";
+
+const newroom = document.getElementById("new");
+newroom.addEventListener("click", (e) => {
+    console.log("Tambah Room");
+    e.preventDefault();
+    fetch("./newroom", {
+        method : 'GET'
+    })
+    .then(response => {
+        if (response.redirected) {
+            window.location.href = response.url;
+        }
+    })
+    .catch(error => {
+        console.error(error);
+    });
+})
+>>>>>>> 15186910f65086d8d1048b77f05a024fbf7adc6e
