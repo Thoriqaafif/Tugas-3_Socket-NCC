@@ -1,11 +1,6 @@
 $(function () {
     const FADE_TIME = 150; // ms
     const TYPING_TIMER_LENGTH = 400; // ms
-    const COLORS = [
-        '#e21400', '#91580f', '#f8a700', '#f78b00',
-        '#58dc00', '#287b00', '#a8f07a', '#4ae8c4',
-        '#3b88eb', '#3824aa', '#a700ff', '#d300e7'
-    ];
 
     // Initialize variables
     const $window = $(window);
@@ -38,11 +33,9 @@ $(function () {
     // Sets the client's username
     const setUsername = () => {
         username = cleanInput($usernameInput.val().trim());
-        window.alert('login');
 
         // If the username is valid
         if (username) {
-            //window.alert("ayooo");
             $loginPage.fadeOut();
             $chatPage.show();
             $loginPage.off('click');
@@ -82,7 +75,6 @@ $(function () {
             $typingMessages.remove();
         }
 
-<<<<<<< HEAD
         const $usernameDiv = $('<span class="username"/>')
             .text(data.username)
             .css('color', getUsernameColor(data.username));
@@ -278,25 +270,24 @@ $(function () {
         log('attempt to reconnect has failed');
     });
 
-});
-=======
-var chat = document.getElementsByClassName('chat');
-//chat.style.float = "right";
+    var chat = document.getElementsByClassName('chat');
+    //chat.style.float = "right";
 
-const newroom = document.getElementById("new");
-newroom.addEventListener("click", (e) => {
-    console.log("Tambah Room");
-    e.preventDefault();
-    fetch("./newroom", {
-        method : 'GET'
+    const newroom = document.getElementById("new");
+    newroom.addEventListener("click", (e) => {
+        console.log("Tambah Room");
+        e.preventDefault();
+        fetch("./newroom", {
+            method: 'GET'
+        })
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
     })
-    .then(response => {
-        if (response.redirected) {
-            window.location.href = response.url;
-        }
-    })
-    .catch(error => {
-        console.error(error);
-    });
-})
->>>>>>> 15186910f65086d8d1048b77f05a024fbf7adc6e
+
+});
