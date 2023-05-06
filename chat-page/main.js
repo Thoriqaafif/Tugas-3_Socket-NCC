@@ -80,7 +80,7 @@ $(function () {
             $inputMessage.val('');
             addChatMessage({ username, message });
             // tell server to execute 'new message' and send along one parameter
-            socket.emit('new message', username, message);
+            socket.emit('new message', message);
         }
     }
 
@@ -98,7 +98,18 @@ $(function () {
             options.fade = false;
             $typingMessages.remove();
         }
-        
+
+        /*const $usernameDiv = $('<span class="username"/>')
+            .text(data.username)
+            .css('color', '#333333');
+        const $messageBodyDiv = $('<span class="messageBody">')
+            .text(data.message);
+
+        const typingClass = data.typing ? 'typing' : '';
+        const $messageDiv = $('<li class="message"/>')
+            .data('username', data.username)
+            .addClass(typingClass)
+            .append($usernameDiv, $messageBodyDiv);*/
         if (data.username == username) {
             const $chatDiv = $('<div>').addClass('chat');
             const $usernameDiv = $('<h6>').addClass('chat-nama').text("anda")
