@@ -104,10 +104,9 @@ app.post("/chat", (req, res) => {
 //TESTING
 let numUsers;
 
-io.on("connection", (socket) => {
-  let addedUser=false;
-  let socketId = socket.id;
-  console.log("Socket connected: "+socketId);
+io.on('connection', (socket) => {
+  let addedUser = false;
+  console.log(socket.id);
 
   // when the client emits 'new message', this listens and executes
   socket.on('new message', (data) => {
@@ -134,6 +133,7 @@ io.on("connection", (socket) => {
       username: socket.username,
       numUsers: numUsers
     });
+    console.log(io.engine.clientsCount);
   });
 
   // when the client emits 'typing', we broadcast it to others
@@ -162,4 +162,4 @@ io.on("connection", (socket) => {
       });
     }
   });
-})
+});

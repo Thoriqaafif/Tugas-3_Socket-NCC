@@ -149,6 +149,22 @@ a>h2 {
     align-items: center;
 }
 
+.chatArea {
+    height: 100%;
+    padding-bottom: 60px;
+}
+
+.message.typing .messageBody {
+    color: gray;
+}
+
+.username {
+    font-weight: 700;
+    overflow: hidden;
+    padding-right: 15px;
+    text-align: right;
+}
+
 .chat {
     display: block;
     margin-bottom: 10px;
@@ -199,3 +215,5 @@ h6.dropdown-toggle {
 h6.dropdown-toggle:hover {
     z-index: 100;
 }
+
+/* Mas Rama */

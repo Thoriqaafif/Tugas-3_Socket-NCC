@@ -1,6 +1,11 @@
 $(function () {
     const FADE_TIME = 150; // ms
     const TYPING_TIMER_LENGTH = 400; // ms
+    const COLORS = [
+        '#e21400', '#91580f', '#f8a700', '#f78b00',
+        '#58dc00', '#287b00', '#a8f07a', '#4ae8c4',
+        '#3b88eb', '#3824aa', '#a700ff', '#d300e7'
+    ];
 
     // Initialize variables
     const $window = $(window);
@@ -10,7 +15,7 @@ $(function () {
 
     const $loginPage = $('.login.page');        // The login page
     const $chatPage = $('.chat.page');          // The chatroom page
-    
+
     var chat = document.getElementsByClassName('chat');
     const newroom = document.getElementById("new");
 
@@ -94,9 +99,9 @@ $(function () {
             $typingMessages.remove();
         }
 
-        const $usernameDiv = $('<span class="username"/>')
+        /*const $usernameDiv = $('<span class="username"/>')
             .text(data.username)
-            .css('color', getUsernameColor(data.username));
+            .css('color', '#333333');
         const $messageBodyDiv = $('<span class="messageBody">')
             .text(data.message);
 
@@ -104,9 +109,19 @@ $(function () {
         const $messageDiv = $('<li class="message"/>')
             .data('username', data.username)
             .addClass(typingClass)
-            .append($usernameDiv, $messageBodyDiv);
+            .append($usernameDiv, $messageBodyDiv);*/
+        const $chatDiv = $('<div>').addClass('chat');
+        const $usernameDiv = $('<h6>').addClass('chat-nama').text(data.username);
 
-        addMessageElement($messageDiv, options);
+        const $bubbleDiv = $('<div>').addClass('chat-bubble');
+        const $message = $('<p>').addClass('chat-isi').text(data.message);
+
+        $bubbleDiv.append($message);
+
+        $chatDiv.append($usernameDiv, $bubbleDiv);
+
+
+        addMessageElement($chatDiv, options);
     }
 
     // Adds the visual chat typing message
