@@ -7,7 +7,7 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 //const session = require('express-session');
 const port = 5000;
-//const dbconnection = require('./configdb/database');
+const dbconnection = require('./configdb/database');
 
 server.listen(port, () => {
   console.log('Server listening at port %d', port);
@@ -25,27 +25,33 @@ app.set("view engine", "html")
 app.set("views", "login_page")
 
 //acces login page
-/*app.get('/', (req, res) => {  
+app.get('/', (req, res) => {  
   res.sendFile(login_page + '/index.html');
 });
 
 app.get('/chat', (req, res) => {  
-  res.sendFile(path.join(__dirname, 'chat-page/index.html'));
+  res.sendFile((chat-page + '/index.html'), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.redirect('/chat');
+    }
+  });
 });
+
 
 //register
 app.post("/add", (req, res) => {
   const insertSql = `INSERT INTO users (username, password) VALUES ('${req.body.username}', '${req.body.password}');`
   dbconnection.query(insertSql, (err, result) => {
-    res.redirect("/");
+    res.status(200).json({message: 'Data inputed'});
   })
 })
 
 //login
-app.get("/:logusername", (req, res) => {
+app.post("/chat", (req, res) => {
   // buat query sql
-  const querySql = `SELECT * FROM users WHERE username = ('${req.query.logusername}') AND password = ('${req.query.logpassword}')`;
-
+  const querySql = `SELECT * FROM users WHERE username = ('${req.body.username}') AND password = ('${req.body.password}')`;
   // jalankan query
   dbconnection.query(querySql, (err, rows, field) => {
           // error handling
@@ -55,14 +61,14 @@ app.get("/:logusername", (req, res) => {
 
           // jika request berhasil
           if(rows.length){
-              res.status(200).json({ data: rows });
+            res.status(200).json({message: 'valid'})
           } else {
               return res.status(404).json({ message: 'Username or Password is Incorrect'});
           }
       });    
   return 0;
 });
-*/
+
 //TESTING
 let socketId;
 let akun = [];

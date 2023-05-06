@@ -1,13 +1,73 @@
-$(function () {
+
+  
     const toForm2 = document.getElementById("toForm2");
     const Form2 = document.getElementById("form2");
     const Form1 = document.getElementById("form1");
+    const loginButton = document.getElementById("login-button");
+    const regisButton = document.getElementById("register-button");
 
     toForm2.addEventListener("click", (e) => {
         Form1.style.display = "none";
         Form2.style.display = "block";
     });
 
+    regisButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        fetch("./add", {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({username : $('#username').val(), password : $('#password').val()})
+          })
+          .then(response => response.json())
+          .then(message => {
+            console.log(message);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+    })
+
+    loginButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        fetch("./chat", {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({username : $('#logusername').val(), password : $('#logpassword').val()})
+        })
+        .then(response => {
+            if(response.status === 200) {
+                return response.json();
+            } else {
+                throw new Error('Invalid username or password');
+            }
+        })
+        .then(message => {
+
+            if(message = 'valid'){
+                fetch("./chat", {
+                    method : 'GET'
+                })
+                .then(response => {
+                    if (response.redirected) {
+                        window.location.href = response.url;
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+            }
+        
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    });
+
+/*$(function () {
     let $loginusername;
     let $loginpassword;
 
@@ -63,5 +123,5 @@ $(function () {
     //Register
     socket.on('register', (username, password) => {
 
-    })*/
-})
+    })
+})*/
