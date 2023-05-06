@@ -1,10 +1,11 @@
 
-  
+
     const toForm2 = document.getElementById("toForm2");
     const Form2 = document.getElementById("form2");
     const Form1 = document.getElementById("form1");
     const loginButton = document.getElementById("login-button");
     const regisButton = document.getElementById("register-button");
+    var username;
 
     toForm2.addEventListener("click", (e) => {
         Form1.style.display = "none";
@@ -20,7 +21,15 @@
             },
             body: JSON.stringify({username : $('#username').val(), password : $('#password').val()})
           })
-          .then(response => response.json())
+          .then(response => {
+            if(response.status == 200){
+                window.alert("Success create an acount");
+                response.json();
+            }
+            else{
+                window.alert("Cann't create account. Username has been used");
+            }
+          })
           .then(message => {
             console.log(message);
           })
@@ -31,6 +40,7 @@
 
     loginButton.addEventListener("click", (e) => {
         e.preventDefault();
+        username=$('#logusername').val();
         fetch("./chat", {
             method: 'POST',
             headers: {
@@ -42,6 +52,7 @@
             if(response.status === 200) {
                 return response.json();
             } else {
+                window.alert("Wrong username and password. Please try again");
                 throw new Error('Invalid username or password');
             }
         })

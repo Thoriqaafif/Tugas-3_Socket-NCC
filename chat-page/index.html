@@ -20,81 +20,107 @@
 </head>
 
 <body>
-    <div class="container-fluid vw-100 vh-100 p-0">
-        <div class="row h-100 w-100 m-0">
-
-            <!--Room List Area-->
-            <div class="col-4 border-end border-dark">
-                <div class="top-bar">
-                    <a href="#">
-                        <h1>+</h1>
-                    </a>
-                    <!--Search Room-->
-                    <form class="d-flex w-100">
-                        <input class="form-control me-2" type="search" placeholder="Cari room" aria-label="Search">
-                        <button class="btn btn-secondary" type="submit">Search</button>
-                    </form>
-                </div>
-                <div class="room-list overflow-auto">
-
-                </div>
-            </div>
-
-            <!--Chat Area-->
-            <div class="col-8 bg-light">
-                <!--NavBar Nama Room-->
-                <div class="top-bar">
-                    <a data-bs-toggle="offcanvas" href="#offcanvasExample">
-                        <img src="/img/profile-picture.png">
-                        <h2 id="room-name"></h2>
-                    </a>
-                </div>
-                <!--List Anggota Room-->
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
-                    aria-labelledby="offcanvasExampleLabel">
-                    <div class="offcanvas-header top-bar">
-                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Anggota</h5>
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <h4>NAMA ANGGOTA DISINI</h4>
-                    </div>
-                </div>
-                <!--ChatBox-->
-                <div class="chat-box overflow-auto">
-                    <div class="chat">
-                        <h6 class="chat-nama">Nama1</h6>
-                        <div class="d-flex">
-                            <div class="dropdown me-2">
-                                <h6 class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                </h6>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="#">Hapus</a></li>
-                                    <li><a class="dropdown-item" href="#">Ubah</a></li>
-                                    <li><a class="dropdown-item" href="#">Balas</a></li>
-                                </ul>
-                            </div>
-                            <div class="chat-bubble">
-                                <p class="chat-isi">Halo! vakvnkrv klervnerv kwe kk vknweo vokenvkv wkrnjkverkj knerk kvjewrn wrklnglkerng w;lkngwjlngr kjgnkjnewkgjerns</p>
+    <ul class="pages vw-100 vh-100" style="padding:0;margin:0;">
+        <li class="chat page">
+            <div class="container-fluid vw-100 vh-100 p-0">
+                <div class="row h-100 w-100 m-0 p-0">
+                    <!--Room List Area-->
+                    <div class="col-4 border-end border-dark p-0">
+                        <div class="top-bar">
+                            <a href="#">
+                                <h1>+</h1>
+                            </a>
+                            <!--Search Room-->
+                            <form class="d-flex w-100">
+                                <input class="form-control me-2" type="search" placeholder="Cari room"
+                                    aria-label="Search">
+                                <button class="btn btn-secondary" type="submit">Search</button>
+                            </form>
+                        </div>
+                        <div class="room-list overflow-auto">
+                            <div class="list-group">
+                                <a class="list-group-item list-group-item-action list-group-item-dark" href="#">Public
+                                    Room</a>
                             </div>
                         </div>
                     </div>
-                    <div class="chat">
-                        <h6 class="chat-nama">Nama2</h6>
-                        <div class="chat-bubble">
-                            <p class="chat-isi">Hai!</p>
+
+                    <!--Chat Area-->
+                    <div class="col-8 bg-light p-0">
+                        <!--NavBar Nama Room-->
+                        <div class="top-bar" id="room-info">
+                            <a data-bs-toggle="offcanvas" href="#offcanvasExample">
+                                <img src="/img/profile-picture.png">
+                                <h2 id="room-name"></h2>
+                            </a>
+                        </div>
+                        <!--List Anggota Room-->
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
+                            aria-labelledby="offcanvasExampleLabel">
+                            <div class="offcanvas-header top-bar">
+                                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Anggota</h5>
+                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <h4>NAMA ANGGOTA DISINI</h4>
+                            </div>
+                        </div>
+                        <!--ChatBox-->
+                        <div class="chat-box overflow-auto">
+                            <ul class="messages"></ul>
+                            <div class="chat">
+                                <h6 class="chat-nama">Nama1</h6>
+                                <div class="d-flex">
+                                    <div class="dropdown me-2">
+                                        <h6 class="dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                        </h6>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="#">Hapus</a></li>
+                                            <li><a class="dropdown-item" href="#">Ubah</a></li>
+                                            <li><a class="dropdown-item" href="#">Balas</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="chat-bubble">
+                                        <p class="chat-isi">Halo! vakvnkrv klervnerv kwe kk vknweo vokenvkv wkrnjkverkj
+                                            knerk kvjewrn wrklnglkerng w;lkngwjlngr kjgnkjnewkgjerns</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat">
+                                <h6 class="chat-nama">Nama2</h6>
+                                <div class="chat-bubble">
+                                    <p class="chat-isi">Hai!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--ChatForm-->
+                        <div class="bottom-bar">
+                            <input class="inputMessage" placeholder="Tulis pesan...">
                         </div>
                     </div>
-                </div>
-                <!--ChatForm-->
-                <div class="bottom-bar">
-                    <input class="message" type="text" placeholder="Tulis pesan...">
+        </li>
+        <li class="login page">
+            <div class="wrapper">
+                <div id="form1">
+                    <div class="title-text">
+                        <div class="title-form">Login Form</div>
+                    </div>
+                    <div class="form-container">
+                        <form class="login" id="login">
+                            <div class="field">
+                                <input class="usernameInput" type="text" placeholder="Username"
+                                    id="logusername" maxlength="14">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+        </li>
+    </ul>
 
-        </div>
+    </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
