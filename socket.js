@@ -14,10 +14,10 @@ server.listen(port, () => {
 });
 
 // Routing
-app.use('/login', express.static(path.join(__dirname, 'login_page')));
+app.use('/login',express.static(path.join(__dirname, 'login_page')));
 app.use(express.static(path.join(__dirname, 'chat-page')));
 app.use('/img', express.static(path.join(__dirname, 'img')));
-app.use('/chat/newroom', express.static(path.join(__dirname, 'new_room')));
+app.use('/newroom', express.static(path.join(__dirname, 'new_room')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -40,12 +40,12 @@ app.get('/chat', (req, res) => {
   });
 });*/
 
-app.get('/chat/newroom', (req, res) => {  
+app.get('/newroom', (req, res) => {  
   res.sendFile((new_room + '/index.html'), (err) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      res.redirect('/chat/newroom');
+      res.redirect('/newroom');
     }
   });
 });
@@ -72,7 +72,7 @@ app.post("/add", (req, res) => {
   })
 })
 
-app.post("/chat/newroom", (req, res) => {
+app.post("/newroom", (req, res) => {
   const insertSql = `INSERT INTO users (username, password) VALUES ('${req.body.username}', '${req.body.password}');`
   dbconnection.query(insertSql, (err, result) => {
     res.status(200).json({message: 'Data inputed'});

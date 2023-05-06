@@ -216,4 +216,8 @@ h6.dropdown-toggle:hover {
     z-index: 100;
 }
 
+#new:hover{
+    cursor: pointer;
+}
+
 /* Mas Rama */

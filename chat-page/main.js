@@ -110,26 +110,39 @@ $(function () {
             .data('username', data.username)
             .addClass(typingClass)
             .append($usernameDiv, $messageBodyDiv);*/
-        const $chatDiv = $('<div>').addClass('chat');
-        const $usernameDiv = $('<h6>').addClass('chat-nama').text(data.username)
-                                .css('color', getUsernameColor(data.username));
+        if (data.username == username) {
+            const $chatDiv = $('<div>').addClass('chat');
+            const $usernameDiv = $('<h6>').addClass('chat-nama').text("anda")
+                .css('color', "#333333");
+            const $bubbleDiv = $('<div>').addClass('chat-bubble');
+            const $message = $('<p>').addClass('chat-isi').text(data.message);
 
-        const $bubbleDiv = $('<div>').addClass('chat-bubble');
-        const $message = $('<p>').addClass('chat-isi').text(data.message);
+            $bubbleDiv.append($message);
 
-        $bubbleDiv.append($message);
+            $chatDiv.append($usernameDiv, $bubbleDiv);
 
-        $chatDiv.append($usernameDiv, $bubbleDiv);
+            addMessageElement($chatDiv, options);
+        }
+        else {
+            const $chatDiv = $('<div>').addClass('chat');
+            const $usernameDiv = $('<h6>').addClass('chat-nama').text(data.username)
+                .css('color', getUsernameColor(data.username));
+            const $bubbleDiv = $('<div>').addClass('chat-bubble');
+            const $message = $('<p>').addClass('chat-isi').text(data.message);
 
+            $bubbleDiv.append($message);
 
-        addMessageElement($chatDiv, options);
+            $chatDiv.append($usernameDiv, $bubbleDiv);
+
+            addMessageElement($chatDiv, options);
+        }
     }
 
     // Adds the visual chat typing message
     const addChatTyping = (data) => {
         data.typing = true;
         data.message = 'is typing';
-        addChatMessage(data);
+        //addChatMessage(data);
     }
 
     // Removes the visual chat typing message
