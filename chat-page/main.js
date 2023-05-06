@@ -10,6 +10,9 @@ $(function () {
 
     const $loginPage = $('.login.page');        // The login page
     const $chatPage = $('.chat.page');          // The chatroom page
+    
+    var chat = document.getElementsByClassName('chat');
+    const newroom = document.getElementById("new");
 
     const socket = io();
 
@@ -19,6 +22,22 @@ $(function () {
     let typing = false;
     let lastTypingTime;
     let $currentInput = $usernameInput.focus();
+
+    newroom.addEventListener("click", (e) => {
+        console.log("Tambah Room");
+        e.preventDefault();
+        fetch("./newroom", {
+            method: 'GET'
+        })
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    })
 
     const addParticipantsMessage = (data) => {
         let message = '';
@@ -269,25 +288,5 @@ $(function () {
     socket.io.on('reconnect_error', () => {
         log('attempt to reconnect has failed');
     });
-
-    var chat = document.getElementsByClassName('chat');
-    //chat.style.float = "right";
-
-    const newroom = document.getElementById("new");
-    newroom.addEventListener("click", (e) => {
-        console.log("Tambah Room");
-        e.preventDefault();
-        fetch("./newroom", {
-            method: 'GET'
-        })
-            .then(response => {
-                if (response.redirected) {
-                    window.location.href = response.url;
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    })
 
 });
