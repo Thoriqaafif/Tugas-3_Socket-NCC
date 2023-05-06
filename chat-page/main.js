@@ -111,7 +111,8 @@ $(function () {
             .addClass(typingClass)
             .append($usernameDiv, $messageBodyDiv);*/
         const $chatDiv = $('<div>').addClass('chat');
-        const $usernameDiv = $('<h6>').addClass('chat-nama').text(data.username);
+        const $usernameDiv = $('<h6>').addClass('chat-nama').text(data.username)
+                                .css('color', getUsernameColor(data.username));
 
         const $bubbleDiv = $('<div>').addClass('chat-bubble');
         const $message = $('<p>').addClass('chat-isi').text(data.message);

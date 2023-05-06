@@ -14,8 +14,8 @@ server.listen(port, () => {
 });
 
 // Routing
-app.use(express.static(path.join(__dirname, 'login_page')));
-app.use('/chat', express.static(path.join(__dirname, 'chat-page')));
+app.use('/login', express.static(path.join(__dirname, 'login_page')));
+app.use(express.static(path.join(__dirname, 'chat-page')));
 app.use('/img', express.static(path.join(__dirname, 'img')));
 app.use('/chat/newroom', express.static(path.join(__dirname, 'new_room')));
 
