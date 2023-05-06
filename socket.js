@@ -17,6 +17,7 @@ server.listen(port, () => {
 app.use(express.static(path.join(__dirname, 'login_page')));
 app.use('/chat', express.static(path.join(__dirname, 'chat-page')));
 app.use('/img', express.static(path.join(__dirname, 'img')));
+app.use('/chat/newroom', express.static(path.join(__dirname, 'new_room')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -39,9 +40,26 @@ app.get('/chat', (req, res) => {
   });
 });
 
+app.get('/chat/newroom', (req, res) => {  
+  res.sendFile((new_room + '/index.html'), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.redirect('/chat/newroom');
+    }
+  });
+});
+
 
 //register
 app.post("/add", (req, res) => {
+  const insertSql = `INSERT INTO users (username, password) VALUES ('${req.body.username}', '${req.body.password}');`
+  dbconnection.query(insertSql, (err, result) => {
+    res.status(200).json({message: 'Data inputed'});
+  })
+})
+
+app.post("/chat/newroom", (req, res) => {
   const insertSql = `INSERT INTO users (username, password) VALUES ('${req.body.username}', '${req.body.password}');`
   dbconnection.query(insertSql, (err, result) => {
     res.status(200).json({message: 'Data inputed'});
@@ -52,6 +70,7 @@ app.post("/add", (req, res) => {
 app.post("/chat", (req, res) => {
   // buat query sql
   const querySql = `SELECT * FROM users WHERE username = ('${req.body.username}') AND password = ('${req.body.password}')`;
+  console.log(req.body.username)
   // jalankan query
   dbconnection.query(querySql, (err, rows, field) => {
           // error handling

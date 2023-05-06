@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = 100vw, initial-scale = 1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href=style.css>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="/script.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="title-form">Create A New Room</div>
+        <div class="form-container">
+            <form class="createroom" id="newroom">
+                <div class="field">
+                    <input class="room" type="text" placeholder="Room Name" required id="roomname">
+                </div>
+                <label class="checkbox-label">
+                    <input type="checkbox" id = "check">
+                    <span class="checkbox-custom"><i class="far fa-square"></i></span>
+                    If you want to add password for your room, click this box
+                </label>
+                <div class="field">
+                    <input class="password" type="password" placeholder="Room Password" required id="roompassword">
+                </div>
+                <div class="field-btn">
+                    <div class="btn-layer"></div>
+                    <input type="submit" value="Create" id="create-button">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/chat/newroom/script.js"></script>
+</body>
+
+</html>

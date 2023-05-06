@@ -36,4 +36,21 @@ var sheetParent = sheetToBeRemoved.parentNode;
 sheetParent.removeChild(sheetToBeRemoved);*/
 
 var chat = document.getElementsByClassName('chat');
-chat.style.float = "right";
+//chat.style.float = "right";
+
+const newroom = document.getElementById("new");
+newroom.addEventListener("click", (e) => {
+    console.log("Tambah Room");
+    e.preventDefault();
+    fetch("./newroom", {
+        method : 'GET'
+    })
+    .then(response => {
+        if (response.redirected) {
+            window.location.href = response.url;
+        }
+    })
+    .catch(error => {
+        console.error(error);
+    });
+})
